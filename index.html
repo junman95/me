@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최준만 이력서</title>
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #111111;
+      --gray-900: #1a1a1a;
+      --gray-700: #3d3d3d;
+      --gray-500: #6b6b6b;
+      --gray-300: #c4c4c4;
+      --gray-100: #f4f4f4;
+      --white: #ffffff;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --accent-muted: #93c5fd;
+      --gray-800: #2a2a2a;
+      --gray-600: #555555;
+      --line: #e4e4e4;
+    }
+
+    html {
+      font-size: 14px;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f0f0f0;
+      color: var(--black);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 210mm;
+      margin: 20px auto;
+      background: var(--white);
+      box-shadow: 0 8px 48px rgba(0, 0, 0, 0.10);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+      padding: 42px 56px 34px;
+      border-bottom: 2px solid var(--black);
+    }
+
+    .header-left {}
+
+    .name {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .title {
+      margin-top: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+
+    .taglines {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .tagline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.87rem;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+
+    .tagline::before {
+      content: '●';
+      font-size: 0.35rem;
+      color: var(--accent-muted);
+      flex-shrink: 0;
+      line-height: 2.4;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      text-align: right;
+      padding-top: 6px;
+    }
+
+    .contact-item {
+      font-size: 0.83rem;
+      color: var(--gray-800);
+      font-weight: 600;
+      letter-spacing: 0.005em;
+    }
+
+    .contact-item strong {
+      color: var(--gray-900);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    /* ── BODY LAYOUT ── */
+    .body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: var(--gray-100);
+      padding: 26px 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .sidebar-section {
+      margin-bottom: 22px;
+    }
+
+    .sidebar-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .sidebar-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-800);
+      margin-bottom: 10px;
+    }
+
+    /* 약력 타임라인 */
+    .timeline {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: var(--gray-300);
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .tl-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: -15px;
+      top: 5px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--gray-300);
+    }
+
+    .tl-item.current .tl-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .tl-period {
+      font-size: 0.73rem;
+      color: var(--gray-800);
+      font-weight: 700;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+
+    .tl-company {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .tl-role {
+      font-size: 0.77rem;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+
+    /* 스킬 태그 */
+    .skill-group {
+      margin-bottom: 12px;
+    }
+
+    .skill-group-name {
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 6px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag {
+      font-size: 0.71rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 2px 5px;
+      border-radius: 2px;
+      line-height: 1.6;
+    }
+
+    .tag.accent {
+      color: var(--accent);
+      border-color: var(--accent-muted);
+      background: var(--accent-light);
+    }
+
+    /* 학력 */
+    .edu-item {
+      margin-bottom: 10px;
+    }
+
+    .edu-school {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .edu-dept {
+      font-size: 0.77rem;
+      color: var(--gray-800);
+      margin-top: 1px;
+    }
+
+    .edu-meta {
+      font-size: 0.73rem;
+      color: var(--gray-600);
+      margin-top: 2px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      padding: 26px 44px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-800);
+      white-space: nowrap;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* 세부경력 */
+    .company-block {
+      margin-bottom: 32px;
+    }
+
+    .company-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .company-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .company-name {
+      font-size: 1.0rem;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+
+    .company-role {
+      font-size: 0.79rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-left: 8px;
+    }
+
+    .company-period {
+      font-size: 0.77rem;
+      color: var(--gray-800);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .project {
+      margin-bottom: 18px;
+      padding-left: 16px;
+      border-left: 2px solid var(--line);
+      transition: border-color 0.15s;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project:hover {
+      border-left-color: var(--accent-muted);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .project-name {
+      font-size: 0.89rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      letter-spacing: -0.01em;
+    }
+
+    .project-period {
+      font-size: 0.73rem;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 0.79rem;
+      color: var(--gray-800);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .project-url {
+      font-size: 0.73rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .project-url:hover {
+      text-decoration: underline;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+
+    .stack-tag {
+      font-size: 0.67rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 1px 6px;
+      border-radius: 2px;
+      letter-spacing: 0.01em;
+    }
+
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .bullets li {
+      font-size: 0.81rem;
+      color: var(--gray-900);
+      font-weight: 600;
+      padding-left: 12px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .bullets li::before {
+      content: '●';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.4rem;
+      color: var(--accent);
+      line-height: 2.2;
+    }
+
+    /* 기타경험 */
+    .extra-item {
+      margin-bottom: 16px;
+      padding-left: 16px;
+      border-left: 2px solid var(--line);
+    }
+
+    .extra-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .extra-title {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+
+    .extra-sub {
+      font-size: 0.79rem;
+      color: var(--gray-800);
+      margin-bottom: 4px;
+    }
+
+    /* 수상/자격 */
+    .award-item {
+      font-size: 0.83rem;
+      color: var(--gray-900);
+      padding-left: 12px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .award-item::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 1px;
+    }
+
+    .award-year {
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-right: 6px;
+      font-size: 0.77rem;
+    }
+
+    /* 병역 */
+    .military {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.81rem;
+      color: var(--gray-800);
+      background: var(--gray-100);
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    .military-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+        width: 210mm;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <div class="name">최준만</div>
+        <div class="title">Web Developer · Full-Stack</div>
+        <div class="taglines">
+          <div class="tagline">극한의 브라우저 <strong style="color:var(--black);font-weight:800;">렌더링 퀄리티와 최적화</strong>를 지향합니다</div>
+          <div class="tagline"><strong style="color:var(--black);font-weight:800;">비즈니스 임팩트</strong>에 대한 고민과 결정을 중요시 합니다</div>
+          <div class="tagline"><strong style="color:var(--black);font-weight:800;">잠재 고객 발굴 기법</strong>에 큰 탐구심을 가지고 있습니다</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="contact-item"><strong>Tel.</strong> 010-4901-9506</div>
+        <div class="contact-item"><strong>Email.</strong> junman9595@gmail.com</div>
+        <div class="contact-item"><strong>LinkedIn.</strong> 최준만</div>
+      </div>
+    </header>
+
+    <div class="body">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- 약력 타임라인 -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">약력</div>
+          <div class="timeline">
+            <div class="tl-item current">
+              <div class="tl-dot"></div>
+              <div class="tl-period">25.01 — 현재</div>
+              <div class="tl-company">마플 코퍼레이션</div>
+              <div class="tl-role">풀스택 개발자</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-period">22.11 — 24.10</div>
+              <div class="tl-company">티맥스 메타에이아이</div>
+              <div class="tl-role">프론트엔드 개발자</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-period">21.07 — 22.06</div>
+              <div class="tl-company">효성첨단소재</div>
+              <div class="tl-role">사무 자동화 개발</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 스킬 -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">기술 스택</div>
+          <div class="skill-group">
+            <div class="skill-group-name">Language</div>
+            <div class="skill-tags">
+              <span class="tag accent">TypeScript</span>
+              <span class="tag accent">JavaScript</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Frontend</div>
+            <div class="skill-tags">
+              <span class="tag accent">React</span>
+              <span class="tag accent">Rune-TS</span>
+              <span class="tag">EJS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Backend</div>
+            <div class="skill-tags">
+              <span class="tag">NestJS</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">Prisma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 강점 -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">Core Focus</div>
+          <div class="skill-tags" style="flex-direction:column; gap: 5px;">
+            <div
+              style="font-size: 0.78rem; color: var(--gray-900); padding: 4px 8px; background: var(--white); border: 1px solid var(--line); border-radius: 2px;">
+              레이아웃 시프트 방지</div>
+            <div
+              style="font-size: 0.78rem; color: var(--gray-900); padding: 4px 8px; background: var(--white); border: 1px solid var(--line); border-radius: 2px;">
+              브라우저 성능 최적화</div>
+            <div
+              style="font-size: 0.78rem; color: var(--gray-900); padding: 4px 8px; background: var(--white); border: 1px solid var(--line); border-radius: 2px;">
+              SEO 개선</div>
+          </div>
+        </div>
+
+        <!-- 학력 -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">학력</div>
+          <div class="edu-item">
+            <div class="edu-school">광운대학교</div>
+            <div class="edu-dept">컴퓨터 소프트웨어학과 (학사)</div>
+            <div class="edu-meta">2015.03 — 2019.02 · 3.6/4.5</div>
+          </div>
+        </div>
+
+        <!-- 자격증 -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">자격증</div>
+          <div style="font-size: 0.83rem; color: var(--gray-900); font-weight: 500;">정보처리기사</div>
+        </div>
+
+
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+
+        <!-- 세부경력 마플 -->
+        <section class="section">
+          <div class="section-header">
+            <span class="section-title">세부 경력</span>
+            <div class="section-line"></div>
+          </div>
+
+          <!-- 마플 코퍼레이션 -->
+          <div class="company-block">
+            <div class="company-header">
+              <div>
+                <span class="company-name">마플 코퍼레이션</span>
+                <span class="company-role">풀스택 개발자</span>
+              </div>
+              <span class="company-period">2025.01 — 현재 · 만 4년 5개월</span>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">넥슨 에센셜</span>
+                <span class="project-period">2025.10 — 현재</span>
+              </div>
+              <div class="project-desc">넥슨 에센셜 플랫폼 웹뷰 이식 프로젝트</div>
+              <a class="project-url" href="https://essential.nexon.com" target="_blank">essential.nexon.com ↗</a>
+              <div class="project-stack">
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">EJS</span>
+                <span class="stack-tag">Express.js</span>
+              </div>
+              <ul class="bullets">
+                <li>모바일 마비노기 게임 내 웹뷰 사이트 이식</li>
+                <li>디바이스 정보 기반 심리스한 게임 연동 뷰 개선</li>
+              </ul>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">만상사</span>
+                <span class="project-period">2025.10 — 12</span>
+              </div>
+              <div class="project-desc">마플 B2B 전문 플랫폼 — 풀스택 개발 주도 및 사이트 설계</div>
+              <a class="project-url" href="https://mansangsa.com" target="_blank">mansangsa.com ↗</a>
+              <div class="project-stack">
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">NestJS</span>
+                <span class="stack-tag">Rune-TS</span>
+              </div>
+              <ul class="bullets">
+                <li>레이아웃 시프트 없는 안정적 웹사이트 구현</li>
+                <li>성능 최적화로 구글 라이트하우스 90점대 유지</li>
+                <li>SEO 개선 및 각종 지표 수집 연동 (GA4, GTM, Clarity, JSON-LD 등)</li>
+              </ul>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">마플 오프라인 스토어</span>
+                <span class="project-period">2025.06 — 09</span>
+              </div>
+              <div class="project-desc">마플 성수 오프라인 스토어 시스템 기능 개발</div>
+              <div class="project-stack">
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">EJS</span>
+                <span class="stack-tag">Express.js</span>
+              </div>
+              <ul class="bullets">
+                <li>독특한 바둑판 디자인의 그리드 뷰 구현</li>
+                <li>브라우저 히스토리 직접 제어로 페이지 이동 간 데이터 정합성 유지</li>
+              </ul>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">마플</span>
+                <span class="project-period">2025.02 — 현재</span>
+              </div>
+              <div class="project-desc">초개인화 커머스 플랫폼 마플 개발 운영</div>
+              <a class="project-url" href="https://www.marpple.com" target="_blank">marpple.com ↗</a>
+              <div class="project-stack">
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">EJS</span>
+                <span class="stack-tag">Express.js</span>
+              </div>
+              <ul class="bullets">
+                <li>B2B 키트 상품 / IP상품 문의 페이지 기능 개발</li>
+                <li>구글 애널리틱스 메트릭 수집 연동</li>
+                <li>메인 페이지 및 상품 필터링 리팩토링 및 기능 개선</li>
+              </ul>
+            </div>
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">드림 팩토리</span>
+                <span class="project-period">2025.02 — 현재</span>
+              </div>
+              <div class="project-desc">마플 공정 주문 처리 및 배송 시스템</div>
+              <div class="project-stack">
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">EJS</span>
+                <span class="stack-tag">Express.js</span>
+              </div>
+              <ul class="bullets">
+                <li>해외 배송 주문서 암호화 압축 다운로드 기능 개발</li>
+                <li>화이트 리스트 계정 관리 기능 개발</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 티맥스 -->
+          <br>
+          <div class="company-block">
+            <div class="company-header">
+              <div>
+                <span class="company-name">티맥스 메타에이아이</span>
+                <span class="company-role">프론트엔드 개발자</span>
+              </div>
+              <span class="company-period">2022.11 — 2024.10</span>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">스마트헬스케어협회 메타버스</span>
+                <span class="project-period">2024.08 — 10</span>
+              </div>
+              <div class="project-desc">의료기기 품질책임자 교육용 소켓 통신 기반 다인 교육 및 관리 플랫폼</div>
+              <div class="project-stack">
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">React</span>
+              </div>
+              <ul class="bullets">
+                <li>강사·학생 간 실시간 소켓 통신 기반 교육 플랫폼 FE 개발</li>
+              </ul>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">Mx Studio</span>
+                <span class="project-period">2023.06 — 2024.10</span>
+              </div>
+              <div class="project-desc">3D 메타버스 씬 제작 플랫폼 — 수익성 기여 프로젝트 (갤러리, 헬스케어협회 1·2차)</div>
+              <div class="project-stack">
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">React</span>
+              </div>
+              <ul class="bullets">
+                <li>웹워커 도입으로 대용량 Scene JSON 로딩 시 CPU 블락 이슈 해결</li>
+                <li>노 코드 인터랙션 Undo/Redo 기능 개발 — 메모리 적재 이슈를 디자인 패턴으로 해결</li>
+              </ul>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">CI/CD 파이프라인 구축</span>
+                <span class="project-period">2023.04 — 06</span>
+              </div>
+              <ul class="bullets">
+                <li>사내 배포 파이프라인 설계 및 구축 담당</li>
+              </ul>
+            </div>
+
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">Mint</span>
+                <span class="project-period">2022.11 — 2023.03</span>
+              </div>
+              <div class="project-desc">2D 메타버스 화상회의 및 밋업 플랫폼 — 솔루션 납품 3회 (공주대, 전북, 경기도)</div>
+              <div class="project-stack">
+                <span class="stack-tag">React</span>
+              </div>
+              <ul class="bullets">
+                <li>화상회의 JS DOM 스크립트를 React 컴포넌트로 마이그레이션</li>
+                <li>영상 송출 CPU 블락 이슈 해결</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 효성 -->
+          <div class="company-block">
+            <div class="company-header">
+              <div>
+                <span class="company-name">효성첨단소재</span>
+                <span class="company-role">사원 · 사무 자동화</span>
+              </div>
+              <span class="company-period">2021.07 — 2022.06</span>
+            </div>
+            <div class="project">
+              <div class="project-header">
+                <span class="project-name">RPA 업무 자동화</span>
+                <span class="project-period">2021.07 — 2022.06</span>
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">Python</span>
+              </div>
+              <ul class="bullets">
+                <li>사무 부서 및 공정 루틴 업무 자동화 프로세스 구축 및 유지보수</li>
+                <li>외부 협력사 사내 시스템 구축 개발지원</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 기타 경험 -->
+        <section class="section">
+          <div class="section-header">
+            <span class="section-title">기타 경험</span>
+            <div class="section-line"></div>
+          </div>
+
+          <div class="extra-item">
+            <div class="extra-title">개인 프로젝트 · AI 관상분석 사이트 페이스 인포 개발 <span
+                style="font-size: 0.73rem; font-weight:600; color: var(--accent); background: var(--accent-light); padding: 1px 7px; border-radius: 2px; margin-left: 4px;">진행중</span>
+            </div>
+            <div class="extra-sub" style="margin-bottom: 6px;">Face Info — <a href="https://faceinfo.app/fun"
+                target="_blank" class="project-url" style="font-size: 0.79rem;">faceinfo.app/fun ↗</a></div>
+            <div class="project-stack" style="margin-bottom: 8px;">
+              <span class="stack-tag">Next.js</span>
+              <span class="stack-tag">Supabase</span>
+              <span class="stack-tag">Upstash Redis</span>
+              <span class="stack-tag">Upstash Vector</span>
+            </div>
+            <ul class="bullets">
+              <li>RAG 파이프라인 설계 및 풀스택 구현</li>
+            </ul>
+          </div>
+
+          <div class="extra-item">
+            <div class="extra-title">오픈소스 개발 · <a
+                href="https://marketplace.visualstudio.com/items?itemName=hp-potion.vsc-gameboy" target="_blank"
+                class="project-url" style="font-size: 0.87rem;">vsc-gameboy ↗</a></div>
+            <div class="extra-sub">게임 플랫폼 형태의 VSCode Extension 오픈소스 개발 및 운영</div>
+            <ul class="bullets">
+              <li>VSCode Extension Marketplace 누적 다운로드 약 1,000회 달성, 실제 외부 기여자 존재</li>
+            </ul>
+          </div>
+
+          <div class="extra-item">
+            <div class="extra-title">출간 도서 사전 리뷰</div>
+            <ul class="bullets">
+              <li>『멀티 패러다임 프로그래밍과 타입스크립트』 출간 전 사전 리뷰어 참여</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 수상 -->
+        <section class="section">
+          <div class="section-header">
+            <span class="section-title">수상</span>
+            <div class="section-line"></div>
+          </div>
+          <div class="extra-item">
+            <div class="extra-title">광운대학교 졸업작품 전시회 · 장려상 <span
+                style="font-size:0.73rem; font-weight:600; color:var(--gray-500); margin-left:4px;">2019.02</span></div>
+            <ul class="bullets">
+              <li>STM 시험지 제작 웹앱 — Java Spring JSP 기반 시험지 제작 및 관리 플랫폼</li>
+            </ul>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
